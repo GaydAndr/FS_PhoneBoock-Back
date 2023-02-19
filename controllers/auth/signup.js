@@ -8,8 +8,6 @@ const { User } = require('../../models/user');
 const { RequestError } = require('../../helpers');
 
 const signup = async (req, res) => {
-  console.log(1);
-
   const { userName, email, password } = req.body;
   const user = await User.findOne({ email });
 

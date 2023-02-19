@@ -11,4 +11,14 @@ router.post(
   ctrlWrapper(ctrl.signup)
 );
 
+router.post(
+  '/users/login',
+  validateBody(schemas.loginSchema),
+  ctrlWrapper(ctrl.login)
+);
+
+router.get('/users/logout', authenticate, ctrlWrapper(ctrl.logout));
+
+router.get('/users/current', authenticate, ctrlWrapper(ctrl.getCurrentUser));
+
 module.exports = router;
