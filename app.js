@@ -4,6 +4,7 @@ const logger = require('morgan');
 const cors = require('cors');
 
 const authRouter = require('./routes/api/auth');
+const contactsRouter = require('./routes/api/contacts');
 const app = express();
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
@@ -14,7 +15,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.use('/api/auth', authRouter);
-// app.set('json space', 8);
+app.use('/api/contacts', contactsRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
